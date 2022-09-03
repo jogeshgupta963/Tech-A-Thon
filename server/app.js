@@ -6,6 +6,8 @@ import { connect } from "./database/db.js";
 import cors from "cors";
 import "dotenv/config";
 
+import { router as userRouter } from "./routes/user.js";
+import { router as blogRouter } from "./routes/blog.js";
 //express app
 const app = express();
 
@@ -15,7 +17,8 @@ app.use(cors());
 app.use(cookieParser());
 
 //routes
-
+app.use("/blog", blogRouter);
+app.use("/user", userRouter);
 //database
 (async function () {
   try {
